@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Tree view      -->
+    <record id="support_request_tree_view" model="ir.ui.view">
+        <field name="name">support.request.tree.view</field>
+        <field name="model">office.support.request</field>
+        <field name="arch" type="xml">
+            <tree string="Support">
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="mobile_phone"/>
+                <field name="company_id"/>
+                <field name="urgent"/>
+            </tree>
+        </field>
+    </record>
+    <!-- End Tree View   -->
+    <record id="support_request_form_view" model="ir.ui.view">
+        <field name="name">support.request.form.view</field>
+        <field name="model">office.support.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group style="text-align:center" string="Support Request"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="department_id"/>
+                            <field name="mobile_phone"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="support_description"/>
+                            <field name="urgent"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!-- Add Chatter Form View for  -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+                <!-- End Add chatter Form View for  -->
+            </form>
+        </field>
+    </record>
+    <record id="action_support_request" model="ir.actions.act_window">
+        <field name="name">Support Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">office.support.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

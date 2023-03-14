@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_office_support_request,access.office.support.request,model_office_support_request,,1,1,1,1

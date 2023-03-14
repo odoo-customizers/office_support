@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="office_support_root_menu" name="Office Support" parent="hr.menu_hr_root" sequence="100"/>
+    <menuitem id="support_request_menu" name="Support Request" parent="office_support_root_menu" action="action_support_request" sequence="101"/>
+</odoo>
