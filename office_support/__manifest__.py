@@ -44,7 +44,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/support_request.xml',
+        'views/support_service.xml',
         'views/menu.xml',
+
     ],
     'images': ['static/description/banner.png'],
     'license': 'AGPL-3',

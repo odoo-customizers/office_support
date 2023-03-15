@@ -2,4 +2,5 @@
 <odoo>
     <menuitem id="office_support_root_menu" name="Office Support" parent="hr.menu_hr_root" sequence="100"/>
     <menuitem id="support_request_menu" name="Support Request" parent="office_support_root_menu" action="action_support_request" sequence="101"/>
+    <menuitem id="support_service_menu" name="Support Pending" parent="office_support_root_menu" action="action_support_service" sequence="102"/>
 </odoo>

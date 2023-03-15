@@ -11,4 +11,11 @@ class SupportRequest(models.Model):
     mobile_phone = fields.Char(related="name.mobile_phone", string="Mobile")
     company_id = fields.Many2one(related="name.company_id", string="Company")
     support_description = fields.Text(string="Description")
+    requested_date = fields.Datetime(default=fields.Datetime.now, string="Requested Date")
     urgent = fields.Boolean(default=False, string="Urgent")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('request', 'Requested'),
+        ('progress', 'Progress'),
+        ('done', 'Done'),
+    ], default='draft', track_visibility='onchange')

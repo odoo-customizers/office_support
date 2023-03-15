@@ -5,12 +5,14 @@
         <field name="name">support.request.tree.view</field>
         <field name="model">office.support.request</field>
         <field name="arch" type="xml">
-            <tree string="Support">
+            <tree decoration-muted="state == 'done'" string="Support">
                 <field name="name"/>
                 <field name="department_id"/>
                 <field name="mobile_phone"/>
                 <field name="company_id"/>
                 <field name="urgent"/>
+                <field name="requested_date" readonly="1"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -20,6 +22,9 @@
         <field name="model">office.support.request</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible="draft,request,progress,done"/>
+                </header>
                 <sheet>
                     <group style="text-align:center" string="Support Request"/>
                     <group>
@@ -31,6 +36,7 @@
                         </group>
                         <group>
                             <field name="support_description"/>
+                            <field name="requested_date" readonly="1"/>
                             <field name="urgent"/>
                         </group>
                     </group>
