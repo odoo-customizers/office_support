@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Tree view      -->
+    <record id="support_service_tree_view" model="ir.ui.view">
+        <field name="name">support.service.tree.view</field>
+        <field name="model">office.support.request</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state == 'done'" string="Support">
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="mobile_phone"/>
+                <field name="company_id"/>
+                <field name="urgent"/>
+                <field name="requested_date" readonly="1"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <!-- End Tree View   -->
+    <record id="support_service_form_view" model="ir.ui.view">
+        <field name="name">support.service.form.view</field>
+        <field name="model">office.support.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"
+                           statusbar_visible="draft,request,progress,done"/>
+                    <button name="create" position="attributes">
+                        <attribute name="attrs">{'invisible': [('state', '=', 'request')]}</attribute>
+                    </button>
+                </header>
+                <sheet>
+                    <group style="text-align:center" string="Support Service"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="department_id"/>
+                            <field name="mobile_phone"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="support_description"/>
+                            <field name="requested_date" readonly="1"/>
+                            <field name="urgent"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!-- Add Chatter Form View for  -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+                <!-- End Add chatter Form View for  -->
+            </form>
+        </field>
+    </record>
+
+    <record id="support_service_kanban" model="ir.ui.view">
+        <field name="name">support.service.kanban.view</field>
+        <field name="model">office.support.request</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="mobile_phone"/>
+                <field name="urgent"/>
+                <field name="requested_date" readonly="1"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <ul>
+                                        <li>Name :
+                                            <field name="name"/>
+                                        </li>
+                                        <li>Department:
+                                            <field name="department_id"/>
+                                        </li>
+                                        <li>Mobile:
+                                            <field name="mobile_phone"/>
+                                        </li>
+                                        <li>Urgent:
+                                            <field name="urgent"/>
+                                        </li>
+                                        <li>Requested Date:
+                                            <field name="requested_date"/>
+                                        </li>
+                                    </ul>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_support_service" model="ir.actions.act_window">
+        <field name="name">Support Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">office.support.request</field>
+        <field name="domain">['|',('state','=','request'), ('state','=','progress')]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+</odoo>
