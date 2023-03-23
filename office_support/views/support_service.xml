@@ -101,7 +101,7 @@
         <field name="name">Support Request</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">office.support.request</field>
-        <field name="domain">[('state','=','request')]</field>
+        <field name="domain">['|',('state','=','request'), ('state','=','progress')]</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
 </odoo>
