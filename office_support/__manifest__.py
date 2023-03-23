@@ -26,8 +26,6 @@
     'summary': """Manage your office support by smart app""",
     'author': "Odoo Customizers",
     'maintainer': 'Odoo Customizers',
-    'price': '50.0',
-    'currency': 'USD',
     'company': "Odoo Customizers",
     'website': 'https://www.odoocustomizers.com/',
     'category': 'Human Resources',
